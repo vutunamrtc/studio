@@ -41,11 +41,11 @@ export default function MonthlySummaryChart({
 
   const chartConfig = {
     income: {
-      label: 'Income',
+      label: 'Thu nhập',
       color: 'hsl(var(--chart-1))',
     },
     expense: {
-      label: 'Expense',
+      label: 'Chi tiêu',
       color: 'hsl(var(--chart-2))',
     },
   } satisfies ChartConfig;
@@ -53,8 +53,8 @@ export default function MonthlySummaryChart({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Monthly Summary</CardTitle>
-        <CardDescription>Income vs. Expense over time</CardDescription>
+        <CardTitle>Tóm tắt hàng tháng</CardTitle>
+        <CardDescription>Thu nhập so với chi tiêu theo thời gian</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig} className="h-[400px] w-full">
@@ -65,13 +65,13 @@ export default function MonthlySummaryChart({
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) => value.slice(0, 3)}
+              tickFormatter={(value) => `T${new Date(value).getMonth() + 1}`}
             />
              <YAxis
                 tickLine={false}
                 axisLine={false}
                 tickMargin={10}
-                tickFormatter={(value) => `$${value / 1000}k`}
+                tickFormatter={(value) => `${value / 1000}k`}
               />
             <ChartTooltip content={<ChartTooltipContent />} />
             <ChartLegend content={<ChartLegendContent />} />

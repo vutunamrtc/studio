@@ -16,11 +16,11 @@ import {
 import Link from 'next/link';
 
 const navItems = [
-  { href: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/transactions', label: 'Transactions', icon: ArrowRightLeft },
-  { href: '/categories', label: 'Categories', icon: Shapes },
-  { href: '/reports', label: 'Reports', icon: BarChart },
-  { href: '/budgeting', label: 'Budgeting', icon: BrainCircuit },
+  { href: '/', label: 'Bảng điều khiển', icon: LayoutDashboard },
+  { href: '/transactions', label: 'Giao dịch', icon: ArrowRightLeft },
+  { href: '/categories', label: 'Danh mục', icon: Shapes },
+  { href: '/reports', label: 'Báo cáo', icon: BarChart },
+  { href: '/budgeting', label: 'Ngân sách', icon: BrainCircuit },
 ];
 
 export default function NavLinks() {

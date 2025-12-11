@@ -9,10 +9,10 @@ export default async function ReportsPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-2xl md:text-3xl font-headline font-bold tracking-tight">
-          Reports
+          Báo cáo
         </h1>
         <p className="text-muted-foreground">
-          Analyze your spending habits with detailed reports.
+          Phân tích thói quen chi tiêu của bạn với các báo cáo chi tiết.
         </p>
       </div>
       <MonthlySummaryChart transactions={transactions} />

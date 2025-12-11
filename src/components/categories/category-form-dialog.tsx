@@ -36,7 +36,7 @@ type CategoryFormDialogProps = {
 };
 
 const formSchema = z.object({
-  name: z.string().min(1, 'Category name is required.'),
+  name: z.string().min(1, 'Tên danh mục không được để trống.'),
 });
 
 export default function CategoryFormDialog({
@@ -65,18 +65,18 @@ export default function CategoryFormDialog({
     try {
       if (isEditing) {
         await updateCategory(category.id, values);
-        toast({ title: 'Success', description: 'Category updated.' });
+        toast({ title: 'Thành công', description: 'Danh mục đã được cập nhật.' });
       } else {
         await addCategory(values);
-        toast({ title: 'Success', description: 'Category added.' });
+        toast({ title: 'Thành công', description: 'Danh mục đã được thêm.' });
       }
       setCurrentOpen(false);
       form.reset();
       // In a real app, you'd revalidate the data here.
     } catch (error) {
       toast({
-        title: 'Error',
-        description: 'Something went wrong.',
+        title: 'Lỗi',
+        description: 'Đã có lỗi xảy ra.',
         variant: 'destructive',
       });
     }
@@ -93,9 +93,9 @@ export default function CategoryFormDialog({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{isEditing ? 'Edit' : 'Add'} Category</DialogTitle>
+          <DialogTitle>{isEditing ? 'Sửa' : 'Thêm'} danh mục</DialogTitle>
           <DialogDescription>
-            {isEditing ? 'Update your category name.' : 'Create a new category to organize your transactions.'}
+            {isEditing ? 'Cập nhật tên danh mục của bạn.' : 'Tạo danh mục mới để sắp xếp các giao dịch của bạn.'}
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -105,9 +105,9 @@ export default function CategoryFormDialog({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category Name</FormLabel>
+                  <FormLabel>Tên danh mục</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g. Groceries" {...field} />
+                    <Input placeholder="vd: Mua sắm" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -116,10 +116,10 @@ export default function CategoryFormDialog({
             <DialogFooter>
               <DialogClose asChild>
                 <Button type="button" variant="outline">
-                  Cancel
+                  Hủy
                 </Button>
               </DialogClose>
-              <Button type="submit">Save Category</Button>
+              <Button type="submit">Lưu danh mục</Button>
             </DialogFooter>
           </form>
         </Form>

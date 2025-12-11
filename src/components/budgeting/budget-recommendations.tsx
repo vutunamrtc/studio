@@ -24,16 +24,16 @@ export default function BudgetRecommendations({
   );
   
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'VND',
     }).format(amount);
   };
 
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-semibold">Your AI Budget Plan</h3>
+        <h3 className="text-lg font-semibold">Kế hoạch ngân sách AI của bạn</h3>
         <p className="text-sm text-muted-foreground mt-1">{summary}</p>
       </div>
 
@@ -41,9 +41,9 @@ export default function BudgetRecommendations({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Category</TableHead>
-              <TableHead className="text-right">Recommended Budget</TableHead>
-              <TableHead className="w-[150px]">Percentage</TableHead>
+              <TableHead>Danh mục</TableHead>
+              <TableHead className="text-right">Ngân sách đề xuất</TableHead>
+              <TableHead className="w-[150px]">Tỷ lệ</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -72,7 +72,7 @@ export default function BudgetRecommendations({
         </Table>
       </div>
        <div className="text-right font-bold text-lg">
-          Total Monthly Budget: {formatCurrency(totalBudget)}
+          Tổng ngân sách hàng tháng: {formatCurrency(totalBudget)}
         </div>
     </div>
   );

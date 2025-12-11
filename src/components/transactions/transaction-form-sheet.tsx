@@ -56,10 +56,10 @@ type TransactionFormSheetProps = {
 
 const formSchema = z.object({
   type: z.enum(['expense', 'income']),
-  amount: z.coerce.number().positive('Amount must be positive.'),
-  categoryId: z.string().min(1, 'Please select a category.'),
+  amount: z.coerce.number().positive('Số tiền phải là số dương.'),
+  categoryId: z.string().min(1, 'Vui lòng chọn danh mục.'),
   date: z.date(),
-  description: z.string().min(1, 'Description is required.'),
+  description: z.string().min(1, 'Mô tả không được để trống.'),
 });
 
 export default function TransactionFormSheet({
@@ -96,22 +96,22 @@ export default function TransactionFormSheet({
             date: values.date.toISOString(),
             category: categories.find(c => c.id === values.categoryId)?.name || '',
         });
-        toast({ title: 'Success', description: 'Transaction updated.' });
+        toast({ title: 'Thành công', description: 'Giao dịch đã được cập nhật.' });
       } else {
         await addTransaction({
             ...values,
             date: values.date.toISOString(),
             category: categories.find(c => c.id === values.categoryId)?.name || '',
         });
-        toast({ title: 'Success', description: 'Transaction added.' });
+        toast({ title: 'Thành công', description: 'Giao dịch đã được thêm.' });
       }
       setCurrentOpen(false);
       form.reset();
       // In a real app, you'd revalidate the data here.
     } catch (error) {
       toast({
-        title: 'Error',
-        description: 'Something went wrong.',
+        title: 'Lỗi',
+        description: 'Đã có lỗi xảy ra.',
         variant: 'destructive',
       });
     }
@@ -134,9 +134,9 @@ export default function TransactionFormSheet({
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className="sm:max-w-md">
         <SheetHeader>
-          <SheetTitle>{isEditing ? 'Edit' : 'Add'} Transaction</SheetTitle>
+          <SheetTitle>{isEditing ? 'Sửa' : 'Thêm'} giao dịch</SheetTitle>
           <SheetDescription>
-            {isEditing ? 'Update the details of your transaction.' : 'Enter the details of your new transaction.'}
+            {isEditing ? 'Cập nhật chi tiết giao dịch của bạn.' : 'Nhập chi tiết giao dịch mới của bạn.'}
           </SheetDescription>
         </SheetHeader>
         <Form {...form}>
@@ -146,7 +146,7 @@ export default function TransactionFormSheet({
               name="type"
               render={({ field }) => (
                 <FormItem className="space-y-3">
-                  <FormLabel>Type</FormLabel>
+                  <FormLabel>Loại</FormLabel>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -157,13 +157,13 @@ export default function TransactionFormSheet({
                         <FormControl>
                           <RadioGroupItem value="expense" />
                         </FormControl>
-                        <FormLabel className="font-normal">Expense</FormLabel>
+                        <FormLabel className="font-normal">Chi tiêu</FormLabel>
                       </FormItem>
                       <FormItem className="flex items-center space-x-2 space-y-0">
                         <FormControl>
                           <RadioGroupItem value="income" />
                         </FormControl>
-                        <FormLabel className="font-normal">Income</FormLabel>
+                        <FormLabel className="font-normal">Thu nhập</FormLabel>
                       </FormItem>
                     </RadioGroup>
                   </FormControl>
@@ -177,9 +177,9 @@ export default function TransactionFormSheet({
               name="amount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Amount</FormLabel>
+                  <FormLabel>Số tiền</FormLabel>
                   <FormControl>
-                    <Input type="number" placeholder="$0.00" {...field} />
+                    <Input type="number" placeholder="đ0" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -191,14 +191,14 @@ export default function TransactionFormSheet({
               name="categoryId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Danh mục</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a category" />
+                        <SelectValue placeholder="Chọn một danh mục" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -219,7 +219,7 @@ export default function TransactionFormSheet({
               name="date"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel>Date</FormLabel>
+                  <FormLabel>Ngày</FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -233,7 +233,7 @@ export default function TransactionFormSheet({
                           {field.value ? (
                             format(field.value, 'PPP')
                           ) : (
-                            <span>Pick a date</span>
+                            <span>Chọn một ngày</span>
                           )}
                           <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
@@ -258,9 +258,9 @@ export default function TransactionFormSheet({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Mô tả</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="e.g. Weekly groceries" {...field} />
+                    <Textarea placeholder="vd: Tiền mua sắm hàng tuần" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -270,10 +270,10 @@ export default function TransactionFormSheet({
             <SheetFooter>
               <SheetClose asChild>
                 <Button type="button" variant="outline">
-                  Cancel
+                  Hủy
                 </Button>
               </SheetClose>
-              <Button type="submit">Save Transaction</Button>
+              <Button type="submit">Lưu giao dịch</Button>
             </SheetFooter>
           </form>
         </Form>

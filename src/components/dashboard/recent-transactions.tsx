@@ -27,18 +27,18 @@ export default function RecentTransactions({
   const recentTransactions = transactions.slice(0, 5);
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
-      currency: 'USD',
+      currency: 'VND',
     }).format(amount);
   };
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Recent Transactions</CardTitle>
+        <CardTitle>Giao dịch gần đây</CardTitle>
         <CardDescription>
-          Your 5 most recent transactions.
+          5 giao dịch gần nhất của bạn.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -46,9 +46,9 @@ export default function RecentTransactions({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Description</TableHead>
-                <TableHead>Category</TableHead>
-                <TableHead className="text-right">Amount</TableHead>
+                <TableHead>Mô tả</TableHead>
+                <TableHead>Danh mục</TableHead>
+                <TableHead className="text-right">Số tiền</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -57,7 +57,7 @@ export default function RecentTransactions({
                   <TableCell>
                     <div className="font-medium">{transaction.description}</div>
                     <div className="text-sm text-muted-foreground">
-                      {new Date(transaction.date).toLocaleDateString()}
+                      {new Date(transaction.date).toLocaleDateString('vi-VN')}
                     </div>
                   </TableCell>
                   <TableCell>

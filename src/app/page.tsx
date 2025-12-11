@@ -11,10 +11,10 @@ export default async function DashboardPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-2xl md:text-3xl font-headline font-bold tracking-tight">
-          Dashboard
+          Bảng điều khiển
         </h1>
         <p className="text-muted-foreground">
-          Here's a summary of your financial activity.
+          Đây là tóm tắt hoạt động tài chính của bạn.
         </p>
       </div>
 

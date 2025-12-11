@@ -19,7 +19,7 @@ import { LogOut } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'PaisaPal',
-  description: 'Track your income and expenses with ease.',
+  description: 'Theo dõi thu nhập và chi tiêu của bạn một cách dễ dàng.',
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
   const userAvatar = PlaceHolderImages.find((p) => p.id === 'user-avatar');
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="vi" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -63,7 +63,7 @@ export default function RootLayout({
                     <AvatarFallback>U</AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col overflow-hidden">
-                    <span className="text-sm font-medium truncate">User</span>
+                    <span className="text-sm font-medium truncate">Người dùng</span>
                     <span className="text-xs text-muted-foreground truncate">
                       user@email.com
                     </span>

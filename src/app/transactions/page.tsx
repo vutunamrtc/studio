@@ -13,16 +13,16 @@ export default async function TransactionsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl md:text-3xl font-headline font-bold tracking-tight">
-            Transactions
+            Giao dịch
           </h1>
           <p className="text-muted-foreground">
-            View and manage all your transactions.
+            Xem và quản lý tất cả các giao dịch của bạn.
           </p>
         </div>
         <TransactionFormSheet categories={categories}>
           <Button>
             <PlusCircle className="mr-2 h-4 w-4" />
-            Add Transaction
+            Thêm giao dịch
           </Button>
         </TransactionFormSheet>
       </div>

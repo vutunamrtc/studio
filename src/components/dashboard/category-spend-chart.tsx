@@ -31,7 +31,7 @@ export default function CategorySpendChart({
 
   const spendingByCategory = expenseTransactions.reduce((acc, transaction) => {
     const categoryName =
-      categories.find((c) => c.id === transaction.categoryId)?.name || 'Other';
+      categories.find((c) => c.id === transaction.categoryId)?.name || 'Khác';
     if (!acc[categoryName]) {
       acc[categoryName] = 0;
     }
@@ -55,9 +55,9 @@ export default function CategorySpendChart({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Category Spending</CardTitle>
+        <CardTitle>Chi tiêu theo danh mục</CardTitle>
         <CardDescription>
-          A breakdown of your expenses by category for this month.
+          Phân tích chi tiêu của bạn theo danh mục trong tháng này.
         </CardDescription>
       </CardHeader>
       <CardContent>

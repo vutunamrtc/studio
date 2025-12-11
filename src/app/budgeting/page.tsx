@@ -23,8 +23,8 @@ export default function BudgetingPage() {
     } catch (error) {
       console.error(error);
       toast({
-        title: 'Error Generating Recommendations',
-        description: 'There was an issue getting your budget recommendations. Please try again.',
+        title: 'Lỗi tạo đề xuất',
+        description: 'Có sự cố khi lấy đề xuất ngân sách của bạn. Vui lòng thử lại.',
         variant: 'destructive',
       });
     } finally {
@@ -36,10 +36,10 @@ export default function BudgetingPage() {
     <div className="space-y-8">
       <div>
         <h1 className="text-2xl md:text-3xl font-headline font-bold tracking-tight">
-          AI Budgeting Tool
+          Công cụ lập ngân sách AI
         </h1>
         <p className="text-muted-foreground">
-          Get personalized budget recommendations based on your spending habits.
+          Nhận đề xuất ngân sách được cá nhân hóa dựa trên thói quen chi tiêu của bạn.
         </p>
       </div>
 
@@ -48,20 +48,20 @@ export default function BudgetingPage() {
           {!recommendations && !loading && (
             <>
               <h3 className="text-lg font-semibold">
-                Ready for your smart budget?
+                Sẵn sàng cho ngân sách thông minh của bạn?
               </h3>
               <p className="text-muted-foreground max-w-md">
-                Our AI will analyze your transaction history to create a
-                personalized budget plan just for you.
+                AI của chúng tôi sẽ phân tích lịch sử giao dịch của bạn để tạo
+                một kế hoạch ngân sách được cá nhân hóa chỉ dành cho bạn.
               </p>
               <Button onClick={handleGenerate} disabled={loading}>
                 {loading ? (
                   <>
                     <Loader className="mr-2 h-4 w-4 animate-spin" />
-                    Generating...
+                    Đang tạo...
                   </>
                 ) : (
-                  'Generate My Budget'
+                  'Tạo ngân sách của tôi'
                 )}
               </Button>
             </>
@@ -70,7 +70,7 @@ export default function BudgetingPage() {
           {loading && (
              <div className="flex flex-col items-center gap-2">
                 <Loader className="h-8 w-8 animate-spin text-primary" />
-                <p className="text-muted-foreground">Analyzing your spending...</p>
+                <p className="text-muted-foreground">Đang phân tích chi tiêu của bạn...</p>
              </div>
           )}
 
@@ -82,10 +82,10 @@ export default function BudgetingPage() {
                 {loading ? (
                   <>
                     <Loader className="mr-2 h-4 w-4 animate-spin" />
-                    Re-generating...
-                  </>
+                    Đang tạo lại...
+                  </_>
                 ) : (
-                  'Re-generate Budget'
+                  'Tạo lại ngân sách'
                 )}
               </Button>
               </div>

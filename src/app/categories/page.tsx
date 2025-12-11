@@ -12,16 +12,16 @@ export default async function CategoriesPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl md:text-3xl font-headline font-bold tracking-tight">
-            Categories
+            Danh mục
           </h1>
           <p className="text-muted-foreground">
-            Organize your transactions by creating and managing categories.
+            Sắp xếp các giao dịch của bạn bằng cách tạo và quản lý các danh mục.
           </p>
         </div>
         <CategoryFormDialog>
             <Button>
                 <PlusCircle className="mr-2 h-4 w-4" />
-                Add Category
+                Thêm danh mục
             </Button>
         </CategoryFormDialog>
       </div>
