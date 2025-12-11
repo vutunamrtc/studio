@@ -46,7 +46,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <SidebarProvider>
           <Sidebar collapsible="icon">
-             <SidebarHeader className="p-2 flex items-center justify-center group-data-[collapsible=icon]:justify-center">
+            <SidebarHeader className="p-2 flex items-center justify-center group-data-[collapsible=icon]:justify-center">
               <div className="flex items-center gap-2 w-full">
                 <AppLogo className="size-8 min-w-8 text-primary" />
                 <h1 className="text-xl font-headline font-semibold truncate group-data-[collapsible=icon]:hidden">
@@ -69,10 +69,10 @@ export default function RootLayout({
                     user@email.com
                   </span>
                 </div>
+                 <Button variant="ghost" size="icon" className="size-7 group-data-[collapsible=icon]:hidden">
+                    <LogOut className="size-4" />
+                  </Button>
               </div>
-               <Button variant="ghost" size="icon" className="size-7 group-data-[collapsible=icon]:hidden">
-                  <LogOut className="size-4" />
-                </Button>
             </SidebarFooter>
           </Sidebar>
           <SidebarInset>
