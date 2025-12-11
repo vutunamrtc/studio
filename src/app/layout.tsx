@@ -66,49 +66,6 @@ export default function RootLayout({
             <SidebarContent>
               <NavLinks />
             </SidebarContent>
-            <SidebarFooter className="mt-auto items-center group-data-[collapsible=icon]:p-0 p-2 flex flex-col gap-2">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="relative w-full justify-start items-center gap-2 group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-0"
-                  >
-                    <Avatar className="size-8">
-                      <AvatarImage
-                        src={userAvatar?.imageUrl}
-                        alt="User Avatar"
-                      />
-                      <AvatarFallback>U</AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col items-start truncate group-data-[collapsible=icon]:hidden">
-                      <p className="text-sm font-medium leading-none">
-                        Người dùng
-                      </p>
-                      <p className="text-xs leading-none text-muted-foreground">
-                        user@email.com
-                      </p>
-                    </div>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56" align="end" forceMount>
-                  <DropdownMenuLabel className="font-normal">
-                    <div className="flex flex-col space-y-1">
-                      <p className="text-sm font-medium leading-none">
-                        Người dùng
-                      </p>
-                      <p className="text-xs leading-none text-muted-foreground">
-                        user@email.com
-                      </p>
-                    </div>
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Đăng xuất</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </SidebarFooter>
           </Sidebar>
           <SidebarInset>
             <div className="flex flex-col h-full">
