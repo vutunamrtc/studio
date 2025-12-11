@@ -12,10 +12,6 @@ import {
 import { AppLogo } from '@/components/app-logo';
 import NavLinks from '@/components/shared/nav-links';
 import Header from '@/components/shared/header';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Button } from '@/components/ui/button';
-import { LogOut } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'PaisaPal',
@@ -27,7 +23,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const userAvatar = PlaceHolderImages.find((p) => p.id === 'user-avatar');
 
   return (
     <html lang="vi" suppressHydrationWarning>
@@ -57,22 +52,8 @@ export default function RootLayout({
             <SidebarContent>
               <NavLinks />
             </SidebarContent>
-            <SidebarFooter className="group-data-[collapsible=icon]:justify-center">
-              <div className="flex items-center gap-3">
-                <Avatar className="size-8">
-                  <AvatarImage src={userAvatar?.imageUrl} alt="User Avatar" />
-                  <AvatarFallback>U</AvatarFallback>
-                </Avatar>
-                <div className="flex flex-col overflow-hidden group-data-[collapsible=icon]:hidden">
-                  <span className="text-sm font-medium truncate">Người dùng</span>
-                  <span className="text-xs text-muted-foreground truncate">
-                    user@email.com
-                  </span>
-                </div>
-                 <Button variant="ghost" size="icon" className="size-7 group-data-[collapsible=icon]:hidden">
-                    <LogOut className="size-4" />
-                  </Button>
-              </div>
+            <SidebarFooter>
+              {/* User info moved to header */}
             </SidebarFooter>
           </Sidebar>
           <SidebarInset>
