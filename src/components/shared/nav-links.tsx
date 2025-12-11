@@ -30,12 +30,13 @@ export default function NavLinks() {
     <SidebarMenu>
       {navItems.map((item) => (
         <SidebarMenuItem key={item.href}>
-          <Link href={item.href} passHref legacyBehavior>
+          <Link href={item.href}>
             <SidebarMenuButton
               isActive={
-                item.href === '/' ? pathname === item.href : pathname.startsWith(item.href)
+                item.href === '/'
+                  ? pathname === item.href
+                  : pathname.startsWith(item.href)
               }
-              asChild
             >
               <item.icon />
               <span>{item.label}</span>
