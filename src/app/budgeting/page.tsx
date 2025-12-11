@@ -83,7 +83,7 @@ export default function BudgetingPage() {
                   <>
                     <Loader className="mr-2 h-4 w-4 animate-spin" />
                     Đang tạo lại...
-                  </_>
+                  </>
                 ) : (
                   'Tạo lại ngân sách'
                 )}
