@@ -45,7 +45,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <SidebarProvider>
-          <Sidebar>
+          <Sidebar collapsible="icon">
             <SidebarHeader>
               <div className="flex items-center gap-2">
                 <AppLogo className="size-8 text-primary" />
