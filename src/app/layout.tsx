@@ -16,6 +16,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+
 
 export const metadata: Metadata = {
   title: 'PaisaPal',
@@ -46,10 +48,12 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <SidebarProvider>
           <Sidebar collapsible="icon">
-            <SidebarHeader>
-              <div className="flex items-center gap-2">
-                <AppLogo className="size-8 text-primary" />
-                <h1 className="text-xl font-headline font-semibold">PaisaPal</h1>
+             <SidebarHeader className="p-2 flex items-center justify-center group-data-[collapsible=icon]:justify-center">
+              <div className="flex items-center gap-2 w-full">
+                <AppLogo className="size-8 min-w-8 text-primary" />
+                <h1 className="text-xl font-headline font-semibold truncate group-data-[collapsible=icon]:hidden">
+                  PaisaPal
+                </h1>
               </div>
             </SidebarHeader>
             <SidebarContent>
@@ -62,14 +66,14 @@ export default function RootLayout({
                     <AvatarImage src={userAvatar?.imageUrl} alt="User Avatar" />
                     <AvatarFallback>U</AvatarFallback>
                   </Avatar>
-                  <div className="flex flex-col overflow-hidden">
+                  <div className="flex flex-col overflow-hidden group-data-[collapsible=icon]:hidden">
                     <span className="text-sm font-medium truncate">Người dùng</span>
                     <span className="text-xs text-muted-foreground truncate">
                       user@email.com
                     </span>
                   </div>
                 </div>
-                 <Button variant="ghost" size="icon" className="size-7">
+                 <Button variant="ghost" size="icon" className="size-7 group-data-[collapsible=icon]:hidden">
                     <LogOut className="size-4" />
                   </Button>
               </div>

@@ -31,7 +31,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6">
-      <SidebarTrigger />
+      <SidebarTrigger className="md:hidden"/>
       <div className="flex-1" />
       <Button variant="ghost" size="icon" onClick={toggleTheme}>
         <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
