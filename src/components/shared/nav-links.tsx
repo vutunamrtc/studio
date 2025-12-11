@@ -11,7 +11,6 @@ import {
   ArrowRightLeft,
   Shapes,
   BarChart,
-  BrainCircuit,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -20,7 +19,6 @@ const navItems = [
   { href: '/transactions', label: 'Giao dịch', icon: ArrowRightLeft },
   { href: '/categories', label: 'Danh mục', icon: Shapes },
   { href: '/reports', label: 'Báo cáo', icon: BarChart },
-  { href: '/budgeting', label: 'Ngân sách', icon: BrainCircuit },
 ];
 
 export default function NavLinks() {
