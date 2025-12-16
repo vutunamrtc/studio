@@ -102,7 +102,7 @@ export default function TransactionTable({ transactions, categories }: Transacti
                         <Pencil className="mr-2 h-4 w-4" />
                         Sửa
                       </DropdownMenuItem>
-                      <DropdownMenuItem className="text-red-500" onClick={() => handleDelete(transaction)}>
+                      <DropdownMenuItem className="text-red-500">
                         <Trash2 className="mr-2 h-4 w-4" />
                         Xóa
                       </DropdownMenuItem>
@@ -119,7 +119,9 @@ export default function TransactionTable({ transactions, categories }: Transacti
         transaction={selectedTransaction}
         open={sheetOpen}
         onOpenChange={setSheetOpen}
-      />
+      >
+        {/* The trigger is now managed by state, so we don't need to render a child here */}
+      </TransactionFormSheet>
     </>
   );
 }

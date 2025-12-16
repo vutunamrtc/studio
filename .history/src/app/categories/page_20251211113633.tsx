@@ -1,4 +1,4 @@
-import { getCategories } from '@/app/lib/data-server';
+import { getCategories } from '@/app/lib/data';
 import CategoryCard from '@/components/categories/category-card';
 import CategoryFormDialog from '@/components/categories/category-form-dialog';
 import { Button } from '@/components/ui/button';
@@ -19,10 +19,10 @@ export default async function CategoriesPage() {
           </p>
         </div>
         <CategoryFormDialog>
-          <Button>
-            <PlusCircle className="mr-2 h-4 w-4" />
-            Thêm danh mục
-          </Button>
+            <Button>
+                <PlusCircle className="mr-2 h-4 w-4" />
+                Thêm danh mục
+            </Button>
         </CategoryFormDialog>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

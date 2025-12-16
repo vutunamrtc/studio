@@ -1,0 +1,98 @@
+# Hướng dẫn sử dụng SQLite Database
+
+## Tổng quan
+
+Ứng dụng đã được chuyển đổi từ sử dụng dữ liệu fake sang sử dụng SQLite database thực tế để lưu trữ dữ liệu.
+
+## Cấu trúc
+
+### Database
+- **Vị trí**: `data/finance.db`
+- **Bảng**:
+  - `categories`: Lưu trữ các danh mục (Groceries, Transport, Housing, v.v.)
+  - `transactions`: Lưu trữ các giao dịch thu/chi
+
+### API Routes
+- `GET /api/transactions` - Lấy danh sách transactions
+- `POST /api/transactions` - Tạo transaction mới
+- `PATCH /api/transactions/[id]` - Cập nhật transaction
+- `DELETE /api/transactions/[id]` - Xóa transaction
+- `GET /api/categories` - Lấy danh sách categories
+- `POST /api/categories` - Tạo category mới
+- `PATCH /api/categories/[id]` - Cập nhật category
+- `DELETE /api/categories/[id]` - Xóa category
+
+### Files quan trọng
+- `src/lib/db.ts` - Database service với các hàm CRUD
+- `src/lib/seed.ts` - Script khởi tạo dữ liệu mẫu
+- `src/app/lib/data.ts` - API wrapper functions
+- `src/app/api/` - API routes
+
+## Khởi tạo Database
+
+### Lần đầu tiên sử dụng
+Chạy script seed để tạo database và dữ liệu mẫu:
+```powershell
+npm run seed
+```
+
+Script sẽ tạo:
+- Database file tại `data/finance.db`
+- 9 categories (Groceries, Transport, Housing, Health, Entertainment, Gifts, Salary, Savings, Other)
+- 7 transactions mẫu
+
+### Kiểm tra dữ liệu
+Để xem dữ liệu hiện tại trong database:
+```powershell
+npm run check-db
+```
+
+## Quản lý Database
+
+### Xem dữ liệu
+Bạn có thể sử dụng các công cụ SQLite như:
+- [DB Browser for SQLite](https://sqlitebrowser.org/)
+- [SQLite Viewer (VS Code Extension)](https://marketplace.visualstudio.com/items?itemName=qwtel.sqlite-viewer)
+
+### Reset database
+Để reset database về trạng thái ban đầu:
+```powershell
+# Xóa database hiện tại
+Remove-Item -Path "data\*.db*" -Force
+
+# Khởi động lại server
+npm run dev
+```
+
+### Backup database
+```powershell
+# Tạo backup
+Copy-Item "data\finance.db" "data\finance.backup.db"
+```
+
+## Lưu ý
+
+1. **Database file không được commit lên Git** - File `.gitignore` đã được cấu hình để bỏ qua thư mục `data/`
+2. **Server-side only** - Database chỉ được truy cập từ API routes (server-side), không thể truy cập trực tiếp từ client
+3. **Auto-initialization** - Database và dữ liệu mẫu sẽ tự động được tạo nếu chưa tồn tại
+
+## Thêm dữ liệu mới
+
+Bạn có thể thêm dữ liệu mới thông qua:
+1. **UI của ứng dụng** - Sử dụng các form trong ứng dụng
+2. **API calls** - Gọi trực tiếp các API endpoints
+3. **Trực tiếp vào database** - Sử dụng SQLite tools
+
+## Troubleshooting
+
+### Lỗi "SQLITE_CONSTRAINT_PRIMARYKEY"
+- Database đã có dữ liệu và đang cố tạo duplicate
+- Giải pháp: Reset database (xem hướng dẫn ở trên)
+
+### Lỗi "Module not found: better-sqlite3"
+- Chạy: `npm install better-sqlite3 @types/better-sqlite3`
+
+### Database không được tạo
+- Kiểm tra thư mục `data/` đã tồn tại chưa
+- Kiểm tra quyền ghi file
+- Xem console log để biết chi tiết lỗi

@@ -1,4 +1,4 @@
-import { getCategories, getTransactions } from '@/app/lib/data-server';
+import { getCategories, getTransactions } from '@/app/lib/data';
 import MonthlySummaryChart from '@/components/reports/monthly-summary-chart';
 
 export default async function ReportsPage() {

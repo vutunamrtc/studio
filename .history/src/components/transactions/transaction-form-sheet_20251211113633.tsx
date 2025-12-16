@@ -46,10 +46,9 @@ import { vi } from 'date-fns/locale';
 import { addTransaction, updateTransaction } from '@/app/lib/data';
 import { useToast } from '@/hooks/use-toast';
 import React from 'react';
-import { useRouter } from 'next/navigation';
 
 type TransactionFormSheetProps = {
-  children?: React.ReactNode;
+  children: React.ReactNode;
   categories: Category[];
   transaction?: Transaction;
   open?: boolean;
@@ -72,7 +71,6 @@ export default function TransactionFormSheet({
   onOpenChange,
 }: TransactionFormSheetProps) {
   const { toast } = useToast();
-  const router = useRouter();
   const [internalOpen, setInternalOpen] = React.useState(false);
   const isEditing = !!transaction;
 
@@ -95,22 +93,22 @@ export default function TransactionFormSheet({
     try {
       if (isEditing) {
         await updateTransaction(transaction.id, {
-          ...values,
-          date: values.date.toISOString(),
-          category: categories.find(c => c.id === values.categoryId)?.name || '',
+            ...values,
+            date: values.date.toISOString(),
+            category: categories.find(c => c.id === values.categoryId)?.name || '',
         });
         toast({ title: 'Thành công', description: 'Giao dịch đã được cập nhật.' });
       } else {
         await addTransaction({
-          ...values,
-          date: values.date.toISOString(),
-          category: categories.find(c => c.id === values.categoryId)?.name || '',
+            ...values,
+            date: values.date.toISOString(),
+            category: categories.find(c => c.id === values.categoryId)?.name || '',
         });
         toast({ title: 'Thành công', description: 'Giao dịch đã được thêm.' });
       }
       setCurrentOpen(false);
       form.reset();
-      router.refresh(); // Reload để cập nhật danh sách
+      // In a real app, you'd revalidate the data here.
     } catch (error) {
       toast({
         title: 'Lỗi',
@@ -119,9 +117,9 @@ export default function TransactionFormSheet({
       });
     }
   }
-
+  
   React.useEffect(() => {
-    if (currentOpen) {
+    if(currentOpen) {
       form.reset({
         type: transaction?.type || 'expense',
         amount: transaction?.amount || 0,
@@ -134,7 +132,7 @@ export default function TransactionFormSheet({
 
   return (
     <Sheet open={currentOpen} onOpenChange={setCurrentOpen}>
-      {children && <SheetTrigger asChild>{children}</SheetTrigger>}
+      <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className="sm:max-w-md">
         <SheetHeader>
           <SheetTitle>{isEditing ? 'Sửa' : 'Thêm'} giao dịch</SheetTitle>

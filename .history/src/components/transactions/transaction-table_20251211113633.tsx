@@ -20,8 +20,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
 import TransactionFormSheet from './transaction-form-sheet';
-import { deleteTransaction } from '@/app/lib/data';
-import { useRouter } from 'next/navigation';
 
 type TransactionTableProps = {
   transactions: Transaction[];
@@ -29,14 +27,13 @@ type TransactionTableProps = {
 };
 
 export default function TransactionTable({ transactions, categories }: TransactionTableProps) {
-  const router = useRouter();
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('vi-VN', {
       style: 'currency',
       currency: 'VND',
     }).format(amount);
   };
-
+  
   const [sheetOpen, setSheetOpen] = React.useState(false);
   const [selectedTransaction, setSelectedTransaction] = React.useState<Transaction | undefined>();
 
@@ -44,21 +41,7 @@ export default function TransactionTable({ transactions, categories }: Transacti
     setSelectedTransaction(transaction);
     setSheetOpen(true);
   };
-
-  const handleDelete = async (transaction: Transaction) => {
-    if (!confirm(`Bạn có chắc muốn xóa giao dịch "${transaction.description}"?`)) {
-      return;
-    }
-
-    try {
-      await deleteTransaction(transaction.id);
-      router.refresh(); // Reload trang để cập nhật danh sách
-    } catch (error) {
-      console.error('Error deleting transaction:', error);
-      alert('Không thể xóa giao dịch. Vui lòng thử lại.');
-    }
-  };
-
+  
   return (
     <>
       <div className="rounded-lg border">
@@ -83,8 +66,9 @@ export default function TransactionTable({ transactions, categories }: Transacti
                   <Badge variant="outline">{transaction.category}</Badge>
                 </TableCell>
                 <TableCell
-                  className={`text-right font-medium ${transaction.type === 'income' ? 'text-green-600 dark:text-green-400' : ''
-                    }`}
+                  className={`text-right font-medium ${
+                    transaction.type === 'income' ? 'text-green-600 dark:text-green-400' : ''
+                  }`}
                 >
                   {transaction.type === 'expense' && '-'}
                   {formatCurrency(transaction.amount)}
@@ -102,7 +86,7 @@ export default function TransactionTable({ transactions, categories }: Transacti
                         <Pencil className="mr-2 h-4 w-4" />
                         Sửa
                       </DropdownMenuItem>
-                      <DropdownMenuItem className="text-red-500" onClick={() => handleDelete(transaction)}>
+                      <DropdownMenuItem className="text-red-500">
                         <Trash2 className="mr-2 h-4 w-4" />
                         Xóa
                       </DropdownMenuItem>
@@ -114,12 +98,14 @@ export default function TransactionTable({ transactions, categories }: Transacti
           </TableBody>
         </Table>
       </div>
-      <TransactionFormSheet
-        categories={categories}
-        transaction={selectedTransaction}
-        open={sheetOpen}
-        onOpenChange={setSheetOpen}
-      />
+      <TransactionFormSheet 
+          categories={categories} 
+          transaction={selectedTransaction}
+          open={sheetOpen}
+          onOpenChange={setSheetOpen}
+      >
+        {/* The trigger is now managed by state, so we don't need to render a child here */}
+      </TransactionFormSheet>
     </>
   );
 }

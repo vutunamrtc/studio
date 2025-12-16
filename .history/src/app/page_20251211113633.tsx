@@ -1,7 +1,7 @@
 import OverviewCards from '@/components/dashboard/overview-cards';
 import CategorySpendChart from '@/components/dashboard/category-spend-chart';
 import RecentTransactions from '@/components/dashboard/recent-transactions';
-import { getTransactions, getCategories } from '@/app/lib/data-server';
+import { getTransactions, getCategories } from '@/app/lib/data';
 
 export default async function DashboardPage() {
   const transactions = await getTransactions();

@@ -1,4 +1,4 @@
-import { getTransactions, getCategories } from '@/app/lib/data-server';
+import { getTransactions, getCategories } from '@/app/lib/data';
 import TransactionTable from '@/components/transactions/transaction-table';
 import TransactionFormSheet from '@/components/transactions/transaction-form-sheet';
 import { Button } from '@/components/ui/button';
